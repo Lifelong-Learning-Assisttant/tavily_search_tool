@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  tavily:
+    image: mcp/tavily:latest
+    container_name: tavily_server
+    env_file:
+      - ./.env
+    environment:
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+    ports:
+      - "8100:8000"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    command: ["node", "build/index.js"]

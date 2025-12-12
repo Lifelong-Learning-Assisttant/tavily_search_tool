@@ -1,0 +1,16 @@
+[project]
+name = "tavily-mcp-test"
+version = "0.1.0"
+description = "Тестовый клиент для Tavily MCP сервера"
+authors = [{name = "Test", email = "test@example.com"}]
+requires-python = ">=3.12"
+
+[dependencies]
+# Нет внешних зависимостей, используем только стандартную библиотеку
+
+[tool.uv]
+dev-dependencies = []
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
