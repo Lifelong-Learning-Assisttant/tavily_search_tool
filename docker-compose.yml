@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   tavily:
-    image: mcp/tavily:latest
+    image: tavily_search_tool:latest
     container_name: tavily_server
     env_file:
       - ./.env
@@ -12,4 +12,14 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
-    command: ["node", "build/index.js"]
+    networks:
+      - tavily_network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/mcp || exit 1"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+networks:
+  tavily_network:
+    driver: bridge
